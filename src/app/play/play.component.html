@@ -1,0 +1,11 @@
+<div class="container">
+  <!-- <h3>Welcome to Game City! your Card Balance Amount is:{{user.amount}}</h3> -->
+  <!-- displaying table -->
+  <table class="table table-dark">
+    <tr *ngFor="let game of gameList">
+      <td>{{game.id}}){{game.gameName}}</td>
+      <td>Rs.{{game.cost}}</td>
+      <td style="text-decoration: underline;color: blue;">playNow</td>
+    </tr>
+  </table>
+</div>

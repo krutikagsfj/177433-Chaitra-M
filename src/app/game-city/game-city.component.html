@@ -1,0 +1,49 @@
+<div class="container" *ngIf="page">
+  <h2>Welcome To GameCity: Experience the Online Gaming Experience</h2>
+  <br/>
+  <form [formGroup]="gameForm" (ngSubmit)="onSubmit(gameForm)">
+    <div class="form-group">
+      <div class="col-sm-10">
+        <label class="control-label col-sm-3">Name:</label>
+        <input class="col-75" formControlName="name">
+      </div>
+    </div>
+    <div *ngIf="gameForm.get('name').hasError('required') && gameForm.get('name').touched">
+      please provide a Name!
+    </div>
+    <div *ngIf="gameForm.get('name').hasError('pattern') && gameForm.get('name').touched">
+      please name should be only characters!
+    </div>
+    <div class="form-group">
+      <div class="control-label col-sm-10">
+        <label class="control-label col-sm-3">Address:</label>
+        <input class="col-75" formControlName="address">
+      </div>
+    </div>
+    <div *ngIf="gameForm.get('address').hasError('required') && gameForm.get('address').touched">
+      please provide a Address!
+    </div>
+    <div class="form-group">
+      <div class="control-label col-sm-10">
+        <label class="control-label col-sm-3">Amount To Pay</label>
+        <input class="col-75" formControlName="amount" type="number">
+      </div>
+    </div>
+    <div *ngIf="gameForm.get('amount').hasError('required') && gameForm.get('amount').touched">
+      please provide the Amount!
+    </div>
+    <div *ngIf="gameForm.get('amount').hasError('pattern') && gameForm.get('amount').touched">
+      please provide the Amount greater than 99!
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="gameForm.invalid">Buy Card</button>
+    <p>Note: 100Rs will be deducted for service charge</p>
+  </form>
+</div>
+<div *ngIf="user" class="container">
+  <h2>Welcome to Game City! your Card Balance Amount is Rs {{amount}}</h2>
+  <br/>
+  <div>
+    <app-play></app-play>
+  </div>
+</div>
